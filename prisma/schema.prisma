@@ -6,3 +6,15 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Employee {
+  id         Int      @id @default(autoincrement())
+  firstName  String
+  lastName   String
+  email      String   @unique
+  position   String
+  hiringDate DateTime @db.Date
+  birthdate  DateTime @db.Date
+
+  @@map("employees")
+}
